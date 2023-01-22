@@ -24,11 +24,8 @@ namespace SideProject_CustomerManagement
 			Application.SetCompatibleTextRenderingDefault(false);
 			
 			string sqlConnectionString = ConfigurationManager.ConnectionStrings["SqlConnection"].ConnectionString;
-			ICustomerView view = new CustomerView();
-			ICustomerRepository repository = new CustomerRepository(sqlConnectionString);
-			//Dependency Injection(DI)
-			new CustomerPersenter(view, repository);
-			
+			IMainView view = new MainView();	
+			new MainPersenter(view, sqlConnectionString);			
 			Application.Run((Form)view);
 		}
 	}

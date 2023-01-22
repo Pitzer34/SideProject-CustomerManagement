@@ -63,7 +63,15 @@ namespace SideProject_CustomerManagement.Persenters
 			customersBindingSource.DataSource = customerList;
 		}
 
-		private void CancelCustomer(object sender, EventArgs e)
+		private void CreateCustomer(object sender, EventArgs e)
+		{
+			throw new NotImplementedException();
+		}
+		private void EditCustomer(object sender, EventArgs e)
+		{
+			throw new NotImplementedException();
+		}
+		private void DeleteCustomer(object sender, EventArgs e)
 		{
 			throw new NotImplementedException();
 		}
@@ -71,22 +79,12 @@ namespace SideProject_CustomerManagement.Persenters
 		private void SaveCustomer(object sender, EventArgs e)
 		{
 			throw new NotImplementedException();
-		}
+		}						
 
-		private void DeleteCustomer(object sender, EventArgs e)
+		private void CancelCustomer(object sender, EventArgs e)
 		{
 			throw new NotImplementedException();
 		}
 
-		private void EditCustomer(object sender, EventArgs e)
-		{
-			throw new NotImplementedException();
-		}
-
-		private void CreateCustomer(object sender, EventArgs e)
-		{
-			throw new NotImplementedException();
-		}
-				
 	}
 }

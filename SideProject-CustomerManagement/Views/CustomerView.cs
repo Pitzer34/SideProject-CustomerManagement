@@ -19,16 +19,18 @@ namespace SideProject_CustomerManagement.Views
 			InitializeComponent();
 			AssociateAndRaiseViewEvents();
 			tabControl1.TabPages.Remove(tabPageDetail);
-			
+			btnClose.Click += delegate { this.Close(); };			
 		}
 
 		private void AssociateAndRaiseViewEvents()
 		{
+			//Search
 			btnListSearch.Click += delegate
 			{
 				if(SearchEvent != null) SearchEvent(this, EventArgs.Empty);
 			};
 
+			//Search by txtEnter
 			txtSearch.KeyDown += (s, e) =>
 			{
 				if (e.KeyCode == Keys.Enter)
@@ -36,14 +38,80 @@ namespace SideProject_CustomerManagement.Views
 					if (SearchEvent != null) SearchEvent(this, EventArgs.Empty);
 				}
 			};
-			//Others
+
+			//Create
+			btnListCreate.Click += delegate
+			{
+				if (CreateEvent != null) CreateEvent(this, EventArgs.Empty);
+				tabControl1.TabPages.Remove(tabPageList);
+				tabControl1.TabPages.Add(tabPageDetail);
+				tabPageDetail.Text = "Add new customer";
+			};
+
+			//Edit
+			btnListEdit.Click += delegate
+			{
+				if (EditEvent != null) EditEvent(this, EventArgs.Empty);
+				tabControl1.TabPages.Remove(tabPageList);
+				tabControl1.TabPages.Add(tabPageDetail);
+				tabPageDetail.Text = "Edit customer";
+			};
+
+			//Delete
+			btnListDelete.Click += delegate
+			{
+				var result = MessageBox.Show("Are you sure you want to delete the select customer?", "Warning", 
+								MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+				if(result == DialogResult.Yes)
+				{
+					if(DeleteEvent != null) DeleteEvent(this, EventArgs.Empty);
+					MessageBox.Show(Message);
+				}				
+			};
+
+			//Save changes
+			btnDetailSave.Click += delegate
+			{
+				if (SaveEvent != null) SaveEvent(this, EventArgs.Empty);
+				if (IsSuccessful)
+				{
+					tabControl1.TabPages.Remove(tabPageDetail);
+					tabControl1.TabPages.Add(tabPageList);
+				}
+
+				MessageBox.Show(Message);
+			};
+
+			//Cancel
+			btnDetailCancel.Click += delegate
+			{
+				if (CancelEvent != null) CancelEvent(this, EventArgs.Empty);
+				tabControl1.TabPages.Remove(tabPageDetail);
+				tabControl1.TabPages.Add(tabPageList);
+			};
 		}
 
-		public int Id { get; set; }
-		public string Name { get; set; }
-		public bool Gender { get; set; }
-		public DateTime Birthday { get; set; }
-		public string Address { get; set; }
+		public string customerId 
+		{
+			get { return textCustomerId.Text; }
+			set { textCustomerId.Text = value; }
+		}
+		public string customerName 
+		{
+			get { return textCustomerName.Text; }
+			set { textCustomerName.Text = value; }
+		}
+		public bool customerGender { get; set; }
+		public DateTime customerBirthday 
+		{
+			get { return dtpCustomerBirthday.Value; }
+			set { dtpCustomerBirthday.Value = value; }
+		}
+		public string customerAddress 
+		{
+			get { return textCustomerAddress.Text; }
+			set { textCustomerAddress.Text = value; }
+		}
 
 		public string SearchValue
 		{
@@ -68,6 +136,30 @@ namespace SideProject_CustomerManagement.Views
 			dataGridView.DataSource = customerList;
 		}
 
-		
+		//Singleton pattern(Open a single form instance)
+		private static CustomerView instance;
+		public static CustomerView GetInstance(Form parentContainer)
+		{
+			if(instance == null || instance.IsDisposed)
+			{
+				instance = new CustomerView();
+				instance.MdiParent = parentContainer;
+				instance.FormBorderStyle = FormBorderStyle.None;
+				instance.Dock = DockStyle.Fill;
+			}
+			else
+			{
+				if(instance.WindowState == FormWindowState.Minimized)
+				{
+					instance.WindowState = FormWindowState.Normal;
+				}
+				else
+				{
+					instance.BringToFront();
+				}
+			}
+
+			return instance;
+		}
 	}
 }

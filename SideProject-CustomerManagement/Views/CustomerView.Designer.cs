@@ -40,13 +40,13 @@
 			this.txtSearch = new System.Windows.Forms.TextBox();
 			this.lblSearch = new System.Windows.Forms.Label();
 			this.tabPageDetail = new System.Windows.Forms.TabPage();
-			this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
+			this.dtpCustomerBirthday = new System.Windows.Forms.DateTimePicker();
 			this.panel2 = new System.Windows.Forms.Panel();
 			this.rbtnFemale = new System.Windows.Forms.RadioButton();
 			this.rbtnMale = new System.Windows.Forms.RadioButton();
-			this.textBox6 = new System.Windows.Forms.TextBox();
-			this.textBox4 = new System.Windows.Forms.TextBox();
-			this.textBox3 = new System.Windows.Forms.TextBox();
+			this.textCustomerName = new System.Windows.Forms.TextBox();
+			this.textCustomerAddress = new System.Windows.Forms.TextBox();
+			this.textCustomerId = new System.Windows.Forms.TextBox();
 			this.btnDetailCancel = new System.Windows.Forms.Button();
 			this.btnDetailSave = new System.Windows.Forms.Button();
 			this.lblAddress = new System.Windows.Forms.Label();
@@ -54,6 +54,7 @@
 			this.lblName = new System.Windows.Forms.Label();
 			this.lblGender = new System.Windows.Forms.Label();
 			this.lblCustomerID = new System.Windows.Forms.Label();
+			this.btnClose = new System.Windows.Forms.Button();
 			this.panel1.SuspendLayout();
 			this.tabControl1.SuspendLayout();
 			this.tabPageList.SuspendLayout();
@@ -76,13 +77,14 @@
 			// panel1
 			// 
 			this.panel1.BackColor = System.Drawing.Color.WhiteSmoke;
+			this.panel1.Controls.Add(this.btnClose);
 			this.panel1.Controls.Add(this.lblCustomers);
 			this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
 			this.panel1.Font = new System.Drawing.Font("Consolas", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.panel1.Location = new System.Drawing.Point(0, 0);
 			this.panel1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
 			this.panel1.Name = "panel1";
-			this.panel1.Size = new System.Drawing.Size(1033, 115);
+			this.panel1.Size = new System.Drawing.Size(1034, 115);
 			this.panel1.TabIndex = 1;
 			// 
 			// tabControl1
@@ -97,7 +99,7 @@
 			this.tabControl1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
 			this.tabControl1.Name = "tabControl1";
 			this.tabControl1.SelectedIndex = 0;
-			this.tabControl1.Size = new System.Drawing.Size(1033, 583);
+			this.tabControl1.Size = new System.Drawing.Size(1034, 543);
 			this.tabControl1.TabIndex = 2;
 			// 
 			// tabPageList
@@ -114,7 +116,7 @@
 			this.tabPageList.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
 			this.tabPageList.Name = "tabPageList";
 			this.tabPageList.Padding = new System.Windows.Forms.Padding(4, 5, 4, 5);
-			this.tabPageList.Size = new System.Drawing.Size(1025, 547);
+			this.tabPageList.Size = new System.Drawing.Size(1026, 507);
 			this.tabPageList.TabIndex = 0;
 			this.tabPageList.Text = "CustomerList";
 			// 
@@ -131,11 +133,12 @@
 			this.dataGridView.Name = "dataGridView";
 			this.dataGridView.RowTemplate.Height = 24;
 			this.dataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-			this.dataGridView.Size = new System.Drawing.Size(862, 453);
+			this.dataGridView.Size = new System.Drawing.Size(863, 413);
 			this.dataGridView.TabIndex = 7;
 			// 
 			// btnListDelete
 			// 
+			this.btnListDelete.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
 			this.btnListDelete.Location = new System.Drawing.Point(894, 185);
 			this.btnListDelete.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
 			this.btnListDelete.Name = "btnListDelete";
@@ -146,6 +149,7 @@
 			// 
 			// btnListEdit
 			// 
+			this.btnListEdit.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
 			this.btnListEdit.Location = new System.Drawing.Point(894, 138);
 			this.btnListEdit.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
 			this.btnListEdit.Name = "btnListEdit";
@@ -156,6 +160,7 @@
 			// 
 			// btnListCreate
 			// 
+			this.btnListCreate.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
 			this.btnListCreate.Location = new System.Drawing.Point(894, 91);
 			this.btnListCreate.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
 			this.btnListCreate.Name = "btnListCreate";
@@ -166,6 +171,7 @@
 			// 
 			// btnListSearch
 			// 
+			this.btnListSearch.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
 			this.btnListSearch.Location = new System.Drawing.Point(775, 45);
 			this.btnListSearch.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
 			this.btnListSearch.Name = "btnListSearch";
@@ -176,6 +182,8 @@
 			// 
 			// txtSearch
 			// 
+			this.txtSearch.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
 			this.txtSearch.Location = new System.Drawing.Point(13, 45);
 			this.txtSearch.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
 			this.txtSearch.Name = "txtSearch";
@@ -195,11 +203,11 @@
 			// 
 			// tabPageDetail
 			// 
-			this.tabPageDetail.Controls.Add(this.dateTimePicker1);
+			this.tabPageDetail.Controls.Add(this.dtpCustomerBirthday);
 			this.tabPageDetail.Controls.Add(this.panel2);
-			this.tabPageDetail.Controls.Add(this.textBox6);
-			this.tabPageDetail.Controls.Add(this.textBox4);
-			this.tabPageDetail.Controls.Add(this.textBox3);
+			this.tabPageDetail.Controls.Add(this.textCustomerName);
+			this.tabPageDetail.Controls.Add(this.textCustomerAddress);
+			this.tabPageDetail.Controls.Add(this.textCustomerId);
 			this.tabPageDetail.Controls.Add(this.btnDetailCancel);
 			this.tabPageDetail.Controls.Add(this.btnDetailSave);
 			this.tabPageDetail.Controls.Add(this.lblAddress);
@@ -211,18 +219,18 @@
 			this.tabPageDetail.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
 			this.tabPageDetail.Name = "tabPageDetail";
 			this.tabPageDetail.Padding = new System.Windows.Forms.Padding(4, 5, 4, 5);
-			this.tabPageDetail.Size = new System.Drawing.Size(1025, 547);
+			this.tabPageDetail.Size = new System.Drawing.Size(1026, 507);
 			this.tabPageDetail.TabIndex = 1;
 			this.tabPageDetail.Text = "CustomerDetail";
 			this.tabPageDetail.UseVisualStyleBackColor = true;
 			// 
-			// dateTimePicker1
+			// dtpCustomerBirthday
 			// 
-			this.dateTimePicker1.Location = new System.Drawing.Point(298, 177);
-			this.dateTimePicker1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-			this.dateTimePicker1.Name = "dateTimePicker1";
-			this.dateTimePicker1.Size = new System.Drawing.Size(200, 31);
-			this.dateTimePicker1.TabIndex = 14;
+			this.dtpCustomerBirthday.Location = new System.Drawing.Point(298, 177);
+			this.dtpCustomerBirthday.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+			this.dtpCustomerBirthday.Name = "dtpCustomerBirthday";
+			this.dtpCustomerBirthday.Size = new System.Drawing.Size(200, 31);
+			this.dtpCustomerBirthday.TabIndex = 14;
 			// 
 			// panel2
 			// 
@@ -257,31 +265,31 @@
 			this.rbtnMale.Text = "male";
 			this.rbtnMale.UseVisualStyleBackColor = true;
 			// 
-			// textBox6
+			// textCustomerName
 			// 
-			this.textBox6.Location = new System.Drawing.Point(55, 177);
-			this.textBox6.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-			this.textBox6.Name = "textBox6";
-			this.textBox6.Size = new System.Drawing.Size(200, 31);
-			this.textBox6.TabIndex = 10;
+			this.textCustomerName.Location = new System.Drawing.Point(55, 177);
+			this.textCustomerName.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+			this.textCustomerName.Name = "textCustomerName";
+			this.textCustomerName.Size = new System.Drawing.Size(200, 31);
+			this.textCustomerName.TabIndex = 10;
 			// 
-			// textBox4
+			// textCustomerAddress
 			// 
-			this.textBox4.Location = new System.Drawing.Point(55, 278);
-			this.textBox4.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-			this.textBox4.Multiline = true;
-			this.textBox4.Name = "textBox4";
-			this.textBox4.Size = new System.Drawing.Size(443, 74);
-			this.textBox4.TabIndex = 8;
+			this.textCustomerAddress.Location = new System.Drawing.Point(55, 278);
+			this.textCustomerAddress.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+			this.textCustomerAddress.Multiline = true;
+			this.textCustomerAddress.Name = "textCustomerAddress";
+			this.textCustomerAddress.Size = new System.Drawing.Size(443, 74);
+			this.textCustomerAddress.TabIndex = 8;
 			// 
-			// textBox3
+			// textCustomerId
 			// 
-			this.textBox3.Location = new System.Drawing.Point(55, 80);
-			this.textBox3.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-			this.textBox3.Name = "textBox3";
-			this.textBox3.ReadOnly = true;
-			this.textBox3.Size = new System.Drawing.Size(200, 31);
-			this.textBox3.TabIndex = 7;
+			this.textCustomerId.Location = new System.Drawing.Point(55, 80);
+			this.textCustomerId.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+			this.textCustomerId.Name = "textCustomerId";
+			this.textCustomerId.ReadOnly = true;
+			this.textCustomerId.Size = new System.Drawing.Size(200, 31);
+			this.textCustomerId.TabIndex = 7;
 			// 
 			// btnDetailCancel
 			// 
@@ -348,18 +356,30 @@
 			this.lblCustomerID.TabIndex = 0;
 			this.lblCustomerID.Text = "Customer ID:";
 			// 
+			// btnClose
+			// 
+			this.btnClose.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+			this.btnClose.Font = new System.Drawing.Font("Consolas", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.btnClose.Location = new System.Drawing.Point(970, 32);
+			this.btnClose.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+			this.btnClose.Name = "btnClose";
+			this.btnClose.Size = new System.Drawing.Size(38, 37);
+			this.btnClose.TabIndex = 8;
+			this.btnClose.Text = "X";
+			this.btnClose.UseVisualStyleBackColor = true;
+			// 
 			// CustomerView
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 19F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.BackColor = System.Drawing.SystemColors.Control;
-			this.ClientSize = new System.Drawing.Size(1033, 698);
+			this.ClientSize = new System.Drawing.Size(1034, 658);
 			this.Controls.Add(this.tabControl1);
 			this.Controls.Add(this.panel1);
 			this.Font = new System.Drawing.Font("Consolas", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
 			this.Name = "CustomerView";
-			this.Text = "Customer";
+			this.Text = "CustomerView";
 			this.panel1.ResumeLayout(false);
 			this.panel1.PerformLayout();
 			this.tabControl1.ResumeLayout(false);
@@ -390,9 +410,9 @@
 		private System.Windows.Forms.Panel panel2;
 		private System.Windows.Forms.RadioButton rbtnFemale;
 		private System.Windows.Forms.RadioButton rbtnMale;
-		private System.Windows.Forms.TextBox textBox6;
-		private System.Windows.Forms.TextBox textBox4;
-		private System.Windows.Forms.TextBox textBox3;
+		private System.Windows.Forms.TextBox textCustomerName;
+		private System.Windows.Forms.TextBox textCustomerAddress;
+		private System.Windows.Forms.TextBox textCustomerId;
 		private System.Windows.Forms.Button btnDetailCancel;
 		private System.Windows.Forms.Button btnDetailSave;
 		private System.Windows.Forms.Label lblAddress;
@@ -400,8 +420,8 @@
 		private System.Windows.Forms.Label lblName;
 		private System.Windows.Forms.Label lblGender;
 		private System.Windows.Forms.Label lblCustomerID;
-		private System.Windows.Forms.DateTimePicker dateTimePicker1;
+		private System.Windows.Forms.DateTimePicker dtpCustomerBirthday;
 		private System.Windows.Forms.DataGridView dataGridView;
-		
+		private System.Windows.Forms.Button btnClose;
 	}
 }

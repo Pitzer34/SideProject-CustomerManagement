@@ -10,11 +10,11 @@ namespace SideProject_CustomerManagement.Interface
 	public interface ICustomerView
 	{
 		//properties - Fields
-		int Id { get; set; }
-		string Name { get; set; }
-		bool Gender { get; set; }
-		DateTime Birthday { get; set; }
-		string Address { get; set; }
+		string customerId { get; set; }
+		string customerName { get; set; }
+		bool customerGender { get; set; }
+		DateTime customerBirthday { get; set; }
+		string customerAddress { get; set; }
 		
 		string SearchValue { get; set; }
 		bool IsEdit { get; set; }
