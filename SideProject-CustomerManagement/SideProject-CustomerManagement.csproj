@@ -48,6 +48,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Infrastructures\ModelDataVaildation.cs" />
     <Compile Include="Infrastructures\Repositories\BaseRepository.cs" />
     <Compile Include="Infrastructures\Repositories\CustomerRepository.cs" />
     <Compile Include="Interface\ICustomerRepository.cs" />

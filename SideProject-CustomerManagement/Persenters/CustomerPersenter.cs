@@ -1,4 +1,5 @@
-﻿using SideProject_CustomerManagement.Interface;
+﻿using SideProject_CustomerManagement.Infrastructures;
+using SideProject_CustomerManagement.Interface;
 using SideProject_CustomerManagement.Models;
 using System;
 using System.Collections.Generic;
@@ -65,25 +66,84 @@ namespace SideProject_CustomerManagement.Persenters
 
 		private void CreateCustomer(object sender, EventArgs e)
 		{
-			throw new NotImplementedException();
+			view.IsEdit = false;
 		}
 		private void EditCustomer(object sender, EventArgs e)
 		{
-			throw new NotImplementedException();
+			var customer = (CustomerModel)customersBindingSource.Current;
+			view.customerId = customer.Id.ToString();
+			view.customerName = customer.Name;
+			view.customerGender = customer.Gender;
+			view.customerBirthday = customer.Birthday;
+			view.customerAddress = customer.Address;
+			view.IsEdit = true;
 		}
 		private void DeleteCustomer(object sender, EventArgs e)
 		{
-			throw new NotImplementedException();
+			try
+			{
+				var customer = (CustomerModel)customersBindingSource.Current;
+				repository.Delete(customer.Id);
+				view.IsSuccessful = true;
+				view.Message = "Customer deleted successfully";
+				LoadAllCustomerList();
+			}
+			catch (Exception ex)
+			{
+				view.IsSuccessful = false;
+				view.Message = "An error ocurred, could not delete customer";
+			}
 		}
 
 		private void SaveCustomer(object sender, EventArgs e)
 		{
-			throw new NotImplementedException();
-		}						
+			var model = new CustomerModel();
+			model.Id = Convert.ToInt32(view.customerId);
+			model.Name = view.customerName;
+			model.Gender = view.customerGender;
+			model.Birthday = view.customerBirthday;
+			model.Address = view.customerAddress;
+
+			try
+			{
+				new ModelDataVaildation().Vaildation(model);
+
+				//Edit model
+				if (view.IsEdit == true)
+				{
+					repository.Edit(model);
+					view.Message = "Customer edited successfully";
+				}
+				//Create model
+				else
+				{
+					repository.Create(model);
+					view.Message = "Customer Created successfully";
+				}
+
+				view.IsSuccessful = true;
+				LoadAllCustomerList();
+				CleanViewFields();
+			}
+			catch(Exception ex)
+			{
+				view.IsSuccessful = false;
+				view.Message = ex.Message;
+			}
+		}
+		
+		private void CleanViewFields()
+		{
+			view.customerId = "0";
+			view.customerName = "";
+			view.customerGender = true;
+			view.customerBirthday = DateTime.Today;
+			view.customerAddress = "";
+		}
 
 		private void CancelCustomer(object sender, EventArgs e)
 		{
-			throw new NotImplementedException();
+			CleanViewFields();
 		}
 
 	}
