@@ -7,6 +7,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SideProject-CustomerManagem
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "方案項目", "方案項目", "{FAF033F2-4628-4143-80DB-EA381EE132BC}"
 	ProjectSection(SolutionItems) = preProject
+		CustomerDb.sql = CustomerDb.sql
 		Readme.txt = Readme.txt
 	EndProjectSection
 EndProject
